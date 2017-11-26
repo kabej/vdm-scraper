@@ -1,8 +1,8 @@
 package com.iadvize
 
-import java.time.{LocalDateTime, ZoneId}
-import java.time.format.DateTimeFormatter
 
+import org.joda.time.LocalDateTime
+import org.joda.time.format.{DateTimeFormat, DateTimeFormatter}
 import spray.httpx.SprayJsonSupport
 import spray.json._
 
@@ -23,10 +23,10 @@ object Posts {
 object PostProtocol extends DefaultJsonProtocol with SprayJsonSupport {
 
   implicit object DateJsonFormat extends RootJsonFormat[LocalDateTime] {
-    private val parserISO: DateTimeFormatter = DateTimeFormatter.ISO_INSTANT
+    private val parserISO: DateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss'Z'")
 
     override def write(obj: LocalDateTime) = {
-      JsString(parserISO.format(obj.atZone(ZoneId.systemDefault())))
+      JsString(parserISO.print(obj))
     }
 
     override def read(json: JsValue): LocalDateTime = json match {
