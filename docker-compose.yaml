@@ -1,0 +1,10 @@
+  mongo:
+    image: mongo
+    volumes:
+      - /var/mongo/data/db:/data/db
+  app:
+    image: vdm-scraper
+    links:
+      - mongo
+    ports:
+      - 8080:8080

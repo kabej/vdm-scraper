@@ -1,23 +1,14 @@
-package com.iadvize
+package com.iadvize.vdm.api
 
-
+import com.iadvize.vdm.domain.{Post, Posts}
 import org.joda.time.LocalDateTime
 import org.joda.time.format.{DateTimeFormat, DateTimeFormatter}
 import spray.httpx.SprayJsonSupport
-import spray.json._
-
-case class Post(id: Int, content: String, date: LocalDateTime, author: String)
-
-case class Posts(posts: List[Post], count: Int)
+import spray.json.{DefaultJsonProtocol, DeserializationException, JsString, JsValue, RootJsonFormat}
 
 /**
-  * Constructeur pour le calcul auto de la taille de la liste
-  */
-object Posts {
-  def apply(posts: List[Post]): Posts = Posts(posts, posts.size)
-}
-
-/**
+  * Created by kbejaoui on 27/11/17.
+  *
   * Marshlling/Unmarshalling des objects Post et Posts
   */
 object PostProtocol extends DefaultJsonProtocol with SprayJsonSupport {
@@ -31,10 +22,11 @@ object PostProtocol extends DefaultJsonProtocol with SprayJsonSupport {
 
     override def read(json: JsValue): LocalDateTime = json match {
       case JsString(s) => LocalDateTime.parse(json.toString())
-      case _ => throw new DeserializationException(json + "is not ISO Format Date")
+      case _ => throw DeserializationException(s"Date $json is not ISO Format Date")
     }
   }
 
   implicit val postFormat = jsonFormat4(Post.apply)
   implicit val postsFormat = jsonFormat2(Posts.apply)
+
 }

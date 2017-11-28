@@ -1,0 +1,15 @@
+= VDM scraper
+
+== Build application
+
+Clone & Build!
+
+[source,sh]
+git clone https://github.com/kabej/vdm-scraper.git
+cd vdm-scraper
+./build.sh
+
+== Launch application
+
+[source,sh]
+docker-compose up
