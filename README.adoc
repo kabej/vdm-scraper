@@ -1,5 +1,10 @@
 = VDM scraper
 
+== Prerequisites
+
+* JDK 1.8
+* SBT 0.13.6
+
 == Build application
 
 Clone & Build!
