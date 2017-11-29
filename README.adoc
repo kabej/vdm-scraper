@@ -39,9 +39,9 @@ http://localhost:8080/api/posts
 
 Parameters :
 
-* from (optionnal) ­- Date de début
-* to (optionnal) ­ Date de fin
-* author (optionnal) ­ Auteur
+* from (optionnal)
+* to (optionnal)
+* author (optionnal)
 
 Use :
 
