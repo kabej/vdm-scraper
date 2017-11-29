@@ -4,6 +4,8 @@
       - /var/mongo/data/db:/data/db
   app:
     image: vdm-scraper
+    environment :
+      - HOST=mongo
     links:
       - mongo
     ports:
