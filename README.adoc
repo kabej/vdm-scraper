@@ -18,3 +18,50 @@ cd vdm-scraper
 
 [source,sh]
 docker-compose up
+
+
+== Test API
+
+http://localhost:8080/api/posts
+
+[source,json]
+{
+  "posts": [
+    {
+      "id": 1,
+      "content": "Aujourd'hui il m'est arrivé un truc drôle.",
+      "date": "2017-01-01T00:00:00Z",
+      "author": "Genius"
+    }
+  ],
+  "count": 1
+}
+
+Parameters :
+
+* from (optionnal) ­- Date de début
+* to (optionnal) ­ Date de fin
+* author (optionnal) ­ Auteur
+
+Use :
+
+[source,json]
+/api/posts
+/api/posts?from=2017-01-01T00:00:00Z&to=2017-12-31T00:00:00Z
+/api/posts?author=Genius
+
+
+
+
+http://localhost:8080/api/posts/<ID>
+
+[source,json]
+{
+  "post": {
+       "id": 1,
+       "content": "Aujourd'hui il m'est arrivé un truc drôle.",
+       "date": "2017-01-01T00:00:00Z",
+       "author": "Genius"
+     }
+}
+
