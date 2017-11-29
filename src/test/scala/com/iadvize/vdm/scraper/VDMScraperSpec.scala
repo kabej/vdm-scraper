@@ -2,16 +2,15 @@ package com.iadvize.vdm.scraper
 
 import com.iadvize.vdm.dao.post.{PostDao, PostSearch}
 import com.iadvize.vdm.domain.Post
-
 import org.scalatest._
 
-import collection.mutable.Stack
-
-import org.scalatest.Assertions._
+import scala.collection.mutable.Stack
 
 
 /**
   * Created by kbejaoui on 27/11/17.
+  *
+  * TODO TU (un peu léger)
   */
 class VDMScraperSpec extends FlatSpec {
 
@@ -34,9 +33,5 @@ class VDMScraperSpec extends FlatSpec {
   it should "scrape 10 articles" in {
     vdmScraper.scrape(10)
     assert(10 == postDaoMock.getPosts(new PostSearch(None, None, None)).size)
-
-
   }
-
-
 }
